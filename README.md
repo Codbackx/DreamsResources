@@ -6,3 +6,9 @@
 
 ### Simbolos de texto: 
 - ⓘ
+
+### Colores HEX y RGB
+
+- Amarillo Primario : <p style="color:#FFEA04;">Este texto es azul</p>
+<p style="color:red;">Este texto es rojo</p>
+ 
