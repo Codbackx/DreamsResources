@@ -8,7 +8,7 @@
 - ⓘ
 
 ### Colores HEX y RGB
-
+![Estado](https://img.shields.io/badge/Estado-Exitoso-brightgreen)
 - Amarillo 100 : #FFEA04   -   255, 234, 4
 - Amarillo -20 : #3E3C22   -   62, 60, 34
 - Gris 100 : #262626  -   38, 38, 38
