@@ -8,7 +8,9 @@
 - ⓘ
 
 ### Colores HEX y RGB
-![Estado](https://img.shields.io/badge/Estado-Exitoso-brightgreen)
+![Estado](https://img.shields.io/badge/Estado-Exitoso-FFEA04)
+![Texto Azul](https://via.placeholder.com/300x50/5D5D5D/FFEA04?text=Texto+en+azul)
+
 - Amarillo 100 : #FFEA04   -   255, 234, 4
 - Amarillo -20 : #3E3C22   -   62, 60, 34
 - Gris 100 : #262626  -   38, 38, 38
