@@ -9,6 +9,9 @@
 
 ### Colores HEX y RGB
 
-- Amarillo Primario : <p style="color:#FFEA04;">Este texto es azul</p>
-<p style="color:red;">Este texto es rojo</p>
+- Amarillo 100 : #FFEA04   -   255, 234, 4
+- Amarillo -20 : #3E3C22   -   62, 60, 34
+- Gris 100 : #262626  -   38, 38, 38
+- Gris 20 : #A4A4A4  -   164, 164, 164
+- Gris 70 : #5D5D5D  -   93, 93, 93
  
