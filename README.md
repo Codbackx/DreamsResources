@@ -23,32 +23,32 @@
 ### Modelos Requeridos
 
 - RoomEntity {
-    images : [String]
-    price : Float
-    description : String
-    status : StatusRoomEnum (OCCUPY, AVAILABLE)
+    images : [String],
+    price : Float,
+    description : String,
+    status : StatusRoomEnum (OCCUPY, AVAILABLE),
     number : UInt
 } 
 
 - ReservationEntity {
-    userDni : String
-    numberRoom : UInt
-    entryDate : String
-    departureDate : String
+    userDni : String,
+    numberRoom : UInt,
+    entryDate : String,
+    departureDate : String,
     dateReservation : String
 }
 
 - UserEnity{
-    dniNumber : String
-    fullNames : String
-    lastNames : String
-    birthdayDate : String
-    phoneNumber : String
+    dniNumber : String,
+    fullNames : String,
+    lastNames : String,
+    birthdayDate : String,
+    phoneNumber : String,
     password : String
 } 
 
 
-- BillEntity{amountTotal : Double}
+- BillEntity{userDni : String,amountTotal : Double}
 
 
 
