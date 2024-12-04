@@ -48,7 +48,7 @@
 } 
 
 
--BillEntity{
+- BillEntity{
     amountTotal : Double    
 }
 
