@@ -21,7 +21,7 @@
 
 
 ### Modelos Requeridos
-- RoomStruct {images : [String],\n price : Float, description }
+- RoomStruct {images : [String],/n price : Float, description }
 
 
 
