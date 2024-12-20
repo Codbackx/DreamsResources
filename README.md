@@ -22,7 +22,7 @@
 
 
 
-### Funciones
+### ! Funciones
   #### Para verificar si es mayor de edad
           func calculateAge(from birthDateString: String) -> Bool? {
             let dateFormatter = DateFormatter()
@@ -32,6 +32,64 @@
 
             return currentAge! >= 18
           }
+  #### Para calcular la cantidad de dias de hospedaje
+          func calculateHostedDay(from startDateString: String, to endDateString: String, with format: String = "dd/MM/yyyy") -> Int? {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = format
+
+            guard let startDate = dateFormatter.date(from: startDateString),
+              let endDate = dateFormatter.date(from: endDateString) else {
+              return nil
+            }
+
+            let difference = Calendar.current.dateComponents([.day], from: startDate, to: endDate)
+            return difference.day
+            }
+  #### Para validar fechas de reservas
+          
+          func validateDateReservation(entrada: String, salida: String) -> String? {
+            let fechaActual = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            let fechaEntradaFormated = formatter.date(from: entrada)!
+            let fechaSalidaFormated = formatter.date(from: salida)!
+    
+            if fechaEntradaFormated < fechaActual {
+              return "La fecha de entrada no puede ser menor a la fecha actual."
+            }
+    
+    
+            if fechaEntradaFormated > fechaSalidaFormated {
+              return "La fecha de entrada no puede ser mayor a la fecha de salida."
+            }
+    
+            return nil
+            }
+### ! Alertas
+  ### Alerta de confirmacion
+            func displaySuccessAlert(viewController: UIViewController, title: String, message: String, okActionHandler: @escaping () ->               Void) {
+              let alerta = UIAlertController(title: title, message: message, preferredStyle: .alert)
+  
+              let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                okActionHandler()
+              }
+    
+              alerta.addAction(okAction)
+    
+              viewController.present(alerta, animated: true, completion: nil)
+            }
+
+  ### Alerta de error
+          func displayErrorAlert(viewController: UIViewController, title : String, message: String) {
+            let alerta = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    
+            alerta.addAction(okAction)
+    
+            viewController.present(alerta, animated: true)
+          }
+  
     
   
 
