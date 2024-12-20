@@ -22,7 +22,7 @@
 
 
 
-###Funciones
+### Funciones
   #### Para verificar si es mayor de edad
           func calculateAge(from birthDateString: String) -> Bool? {
             let dateFormatter = DateFormatter()
