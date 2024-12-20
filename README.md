@@ -19,6 +19,19 @@
   ## Opcionales
     - Mostrar carga animada
     - En caso de vacio mostrar texto de vacio
+
+
+
+###Funciones
+  #### Para verificar si es mayor de edad
+          func calculateAge(from birthDateString: String) -> Bool? {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            guard let birthDate = dateFormatter.date(from: birthDateString) else { return nil }
+            let currentAge : Int? = Calendar.current.dateComponents([.year], from: birthDate, to: Date()).year
+
+            return currentAge! >= 18
+          }
     
   
 
