@@ -101,6 +101,28 @@
     let email = UserDefaults.standard.string(forKey: "emailOfUser")
     let dniNumber = UserDefaults.standard.string(forKey: "dniNumberOfUser")
     let exitToSession = UserDefaults.standard.bool(forKey: "existToSession")
+### Para buscar por contenido 
+    let db = Firestore.firestore()
+    let searchText = "adm" // Subcadena a buscar
+
+    db.collection("users").getDocuments { (querySnapshot, error) in
+      if let error = error {
+        print("Error obteniendo documentos: \(error)")
+      } else {
+        guard let documents = querySnapshot?.documents else { return }
+        let filteredDocuments = documents.filter { document in
+            if let roles = document.data()["roles"] as? [String] {
+                return roles.contains(where: { $0.contains(searchText) })
+            }
+            return false
+        }
+        
+        // Imprimir documentos que coincidan
+        for document in filteredDocuments {
+            print("\(document.documentID) => \(document.data())")
+        }
+      }
+    }
 
   
   
