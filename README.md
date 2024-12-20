@@ -67,7 +67,7 @@
             }
 ### ! Alertas
   ### Alerta de confirmacion
-            func displaySuccessAlert(viewController: UIViewController, title: String, message: String, okActionHandler: @escaping () ->               Void) {
+            func displaySuccessAlert(viewController: UIViewController, title: String, message: String, okActionHandler: @escaping () -> Void) {
               let alerta = UIAlertController(title: title, message: message, preferredStyle: .alert)
   
               let okAction = UIAlertAction(title: "OK", style: .default) { _ in
