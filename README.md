@@ -10,7 +10,16 @@
     - Guardar informacion del ususario logeado
     - Mostrar informacion del usuario logeado en la seccion de perfil y reservas
     - Guardar y listar habitaciones favoritas en coredata
+    - Cambiar estado de la habitacion al ser reservada (OCCUPY - AVAILABLE)
+    - Validar fechas
+    - Campos de fecha
+    - Funciones para (Verificar si es mayor de edad segun la fecha de nacimiento, )
   ## Menos importantes
+    - Agregar alertas para cada accion (reservar,guardar habitacion, registrarse)
+  ## Opcionales
+    - Mostrar carga animada
+    - En caso de vacio mostrar texto de vacio
+    
   
 
 
