@@ -89,6 +89,20 @@
     
             viewController.present(alerta, animated: true)
           }
+### Para hacer uso de UserDefaults
+
+  #### Para Guardar Informacion (value - key)
+    UserDefaults.standard.set(userLogged.fullNames, forKey: "fullNamesOfUser")
+    UserDefaults.standard.set(userLogged.email, forKey: "emailOfUser")
+    UserDefaults.standard.set(userLogged.dniNumer, forKey: "dniNumberOfUser")
+    UserDefaults.standard.set(true, forKey: "existToSession")
+  #### Para Leer informacion
+    let fullnames = UserDefaults.standard.string(forKey: "fullNamesOfUser")
+    let email = UserDefaults.standard.string(forKey: "emailOfUser")
+    let dniNumber = UserDefaults.standard.string(forKey: "dniNumberOfUser")
+    let exitToSession = UserDefaults.standard.bool(forKey: "existToSession")
+
+  
   
     
   
