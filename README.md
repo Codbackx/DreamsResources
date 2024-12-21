@@ -155,7 +155,7 @@
         dateTextField.resignFirstResponder()
        }
 
-    #### 4 - Agregar la fecha seleccionada al textField
+    4 - Agregar la fecha seleccionada al textField
        @objc func dateChanged(datePicker: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
