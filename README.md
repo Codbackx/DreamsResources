@@ -124,6 +124,46 @@
       }
     }
 
+### Convertir un texfield en un campo para poner fecha
+    1 - Creamos el oulet del campo texfield
+    2 - Creamos el selector de fechas con esa funcion
+      func createDatePicker() {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        
+        if #available(iOS 14, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Hecho", style: .done, target: self, action: #selector(doneTapped))
+        toolbar.setItems([doneButton], animated: true)
+        
+        // Asignar el DatePicker y la barra de herramientas al UITextField
+        dateTextField.inputAccessoryView = toolbar
+        dateTextField.inputView = datePicker
+        
+        // Vincular el DatePicker con el UITextField
+        datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+      }
+
+    3 - Creamos Funcion para ocultar el datepicker
+       @objc func doneTapped() {
+        // Ocultar el teclado/DatePicker al presionar "Hecho"
+        dateTextField.resignFirstResponder()
+       }
+
+    #### 4 - Agregar la fecha seleccionada al textField
+       @objc func dateChanged(datePicker: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        dateTextField.text = formatter.string(from: datePicker.date)
+      }
+
   
   
     
