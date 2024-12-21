@@ -125,44 +125,75 @@
     }
 
 ### Convertir un texfield en un campo para poner fecha
-    1 - Creamos el oulet del campo texfield
-    2 - Creamos el selector de fechas con esa funcion
-      func createDatePicker() {
+  #### Clase auxiliar
+    import UIKit
+
+    class DatePickerHelper {
+    static func configureDatePicker(for textField: UITextField, dateFormat: String = "dd/MM/yyyy", doneTitle: String = "Hecho") {
+        // Crear el DatePicker
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         
+        // Configuración para dispositivos con iOS 14 o posterior
         if #available(iOS 14, *) {
             datePicker.preferredDatePickerStyle = .wheels
         }
         
+        // Añadir una barra de herramientas con un botón "Hecho"
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "Hecho", style: .done, target: self, action: #selector(doneTapped))
+        let doneButton = UIBarButtonItem(title: doneTitle, style: .done, target: textField, action:#selector(textField.resignFirstResponder))
         toolbar.setItems([doneButton], animated: true)
         
-        // Asignar el DatePicker y la barra de herramientas al UITextField
-        dateTextField.inputAccessoryView = toolbar
-        dateTextField.inputView = datePicker
+        textField.inputAccessoryView = toolbar
+        textField.inputView = datePicker
         
-        // Vincular el DatePicker con el UITextField
-        datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
-      }
-
-    3 - Creamos Funcion para ocultar el datepicker
-       @objc func doneTapped() {
-        // Ocultar el teclado/DatePicker al presionar "Hecho"
-        dateTextField.resignFirstResponder()
-       }
-
-    4 - Agregar la fecha seleccionada al textField
-       @objc func dateChanged(datePicker: UIDatePicker) {
+        datePicker.addTarget(self, action: #selector(dateChanged(datePicker:for:)), for: .valueChanged)
+        
+        objc_setAssociatedObject(textField, &dateFormatterKey, dateFormat, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+    
+    @objc private static func dateChanged(datePicker: UIDatePicker, for textField: UITextField) {
+        guard let dateFormat = objc_getAssociatedObject(textField, &dateFormatterKey) as? String else { return }
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        dateTextField.text = formatter.string(from: datePicker.date)
+        formatter.dateFormat = dateFormat
+        textField.text = formatter.string(from: datePicker.date)
       }
+    }
+
+    private var dateFormatterKey: UInt8 = 0
+
+  #### Ejemplo de como usarla
+
+     @IBOutlet weak var dateTextField: UITextField!
+      @IBOutlet weak var anotherDateTextField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Configurar los campos de texto para que usen el DatePicker
+        DatePickerHelper.configureDatePicker(for: dateTextField, dateFormat: "dd/MM/yyyy")
+        DatePickerHelper.configureDatePicker(for: anotherDateTextField, dateFormat: "yyyy-MM-dd", doneTitle: "Aceptar")
+    }
+
+
+
+### Funcion para hacer que se haga algo mientras se escriba en un textfield
+
+      @objc func textFieldDidChange(_ textField: UITextField) {
+        // Acción que se ejecuta cuando el texto cambia
+        print("El texto actual es: \(textField.text ?? "")")
+        
+      }
+
+      //esto se pone en el viewDidLoad 
+      sampleTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+
+
+
+
+
 
   
   
